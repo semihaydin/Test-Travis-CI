@@ -2,19 +2,116 @@ body='{
 "request": {
 "branch":"master"
 }}'
-curl -X POST \
-  https://www.netsparkercloud.com/api/1.0/scans/new \
-  -H 'Authorization: Basic ZWFjZTQ5MGY0NDliNDRkOWIzNWNhN2RhMDE4NjEwMTc6RVkzc1Z0WXVZcHgzZUR2Z2NRcisvb0FXTmtid2k5TGVJcnRuTUVnVFQxVT0=' \
-  -H 'Cache-Control: no-cache' \
-  -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 7253b765-5a8c-448d-b0b7-cae322b257cc' \
-  -d '{
-  "TargetUri": "http://php.testsparker.com",
-  "PolicyId": "b20186662a01e411976c0a45dbb897e8",
-  "Scope": "EnteredPathAndBelow",
-  "ExcludeLinks": true,
-  "UrlRewriteMode": "Heuristic",
-  "MaxDynamicSignatures": 60,
-  "UrlRewriteBlockSeparators": "/$.,;|:",
-  "UrlRewriteAnalyzableExtensions": "htm,html",
-  "Cookies": "name1=value1; name2=value2"
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Basic c2VtaWhAbmV0c3Bhcmtlci5jb206R3JRZ1VVSmJzSmF1c3JBZzFSVFk=' -d '{ \ 
+   "TargetUri": "http://example.com/", \ 
+   "AdditionalWebsites": [ \ 
+     { \ 
+       "Canonical": true, \ 
+       "TargetUrl": "http://www.example.com/" \ 
+     }, \ 
+     { \ 
+       "Canonical": false, \ 
+       "TargetUrl": "http://api.example.com/" \ 
+     } \ 
+   ], \ 
+   "BasicAuthenticationApiModel": { \ 
+     "Credentials": [ \ 
+       { \ 
+         "AuthenticationType": "Basic", \ 
+         "Domain": "example.com", \ 
+         "Password": "pass", \ 
+         "UriPrefix": "http://example.com/", \ 
+         "UserName": "user" \ 
+       } \ 
+     ], \ 
+     "IsEnabled": true, \ 
+     "NoChallenge": false \ 
+   }, \ 
+   "ClientCertificateAuthenticationSetting": { \ 
+     "File": { \ 
+       "Content": "U29tZSBmaWxlIGNvbnRlbnQ=", \ 
+       "FileName": "test.crt" \ 
+     }, \ 
+     "IsEnabled": true, \ 
+     "Password": "pass" \ 
+   }, \ 
+   "Cookies": "name1=value1; name2=value2", \ 
+   "CrawlAndAttack": true, \ 
+   "EnableHeuristicChecksInCustomUrlRewrite": true, \ 
+   "ExcludedLinks": [ \ 
+     { \ 
+       "RegexPattern": "(log|sign)\\-?(out|off)" \ 
+     } \ 
+   ], \ 
+   "DisallowedHttpMethods": [], \ 
+   "ExcludeLinks": true, \ 
+   "FindAndFollowNewLinks": true, \ 
+   "FormAuthenticationSettingModel": { \ 
+     "CustomScripts": [], \ 
+     "DefaultPersonaValidation": true, \ 
+     "DetectBearerToken": true, \ 
+     "DisableLogoutDetection": false, \ 
+     "IsEnabled": true, \ 
+     "LoginFormUrl": "http://example.com/login.php", \ 
+     "LoginRequiredUrl": "http://example.com/admin.php", \ 
+     "LogoutKeywordPatterns": [ \ 
+       { \ 
+         "Pattern": "Signin required", \ 
+         "Regex": true \ 
+       } \ 
+     ], \ 
+     "LogoutKeywordPatternsValue": "[{\"Pattern\":\"Signin required\",\"Regex\":true}]", \ 
+     "LogoutRedirectPattern": "http://example.com/Default.php?ref=*", \ 
+     "OverrideTargetUrl": false, \ 
+     "Personas": [ \ 
+       { \ 
+         "IsActive": true, \ 
+         "Password": "pass", \ 
+         "UserName": "user" \ 
+       } \ 
+     ], \ 
+     "PersonasValidation": true \ 
+   }, \ 
+   "HeaderAuthentication": { \ 
+     "Headers": [ \ 
+       { \ 
+         "Name": "Authorization", \ 
+         "Value": "Bearer 12312312312" \ 
+       } \ 
+     ], \ 
+     "IsEnabled": true \ 
+   }, \ 
+   "ImportedLinks": [ \ 
+     "/foo1", \ 
+     "/foo2" \ 
+   ], \ 
+   "ImportedFiles": [ \ 
+     { \ 
+       "Content": "U29tZSBmaWxlIGNvbnRlbnQ=", \ 
+       "FileName": "link.har" \ 
+     } \ 
+   ], \ 
+   "IsMaxScanDurationEnabled": false, \ 
+   "MaxDynamicSignatures": 60, \ 
+   "MaxScanDuration": 48, \ 
+   "Scope": "EnteredPathAndBelow", \ 
+   "SubPathMaxDynamicSignatures": 30, \ 
+   "TimeWindow": { \ 
+     "Items": [ \ 
+       { \ 
+         "Day": "Monday", \ 
+         "From": "09:00", \ 
+         "ScanningAllowed": false, \ 
+         "To": "18:00" \ 
+       } \ 
+     ] \ 
+   }, \ 
+   "UrlRewriteAnalyzableExtensions": "htm,html", \ 
+   "UrlRewriteBlockSeparators": "/$.,;|:", \ 
+   "UrlRewriteMode": "Custom", \ 
+   "UrlRewriteRules": [ \ 
+     { \ 
+       "PlaceholderPattern": "/blog/{category}/{title}" \ 
+     } \ 
+   ] \ 
+ }' 'https://www.netsparkercloud.com/api/1.0/scans/new'
