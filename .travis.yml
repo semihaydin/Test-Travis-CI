@@ -1,7 +1,3 @@
-body='{
-"request": {
-"branch":"master"
-}}'
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Basic c2VtaWhAbmV0c3Bhcmtlci5jb206R3JRZ1VVSmJzSmF1c3JBZzFSVFk=' -d '{ \ 
    "TargetUri": "http://example.com/", \ 
    "AdditionalWebsites": [ \ 
