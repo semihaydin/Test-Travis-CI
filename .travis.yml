@@ -1,3 +1,4 @@
+#!/bin/bash
 curl -X POST \
   https://www.netsparkercloud.com/api/1.0/scans/new \
   -H 'Authorization: Basic ZWFjZTQ5MGY0NDliNDRkOWIzNWNhN2RhMDE4NjEwMTc6RVkzc1Z0WXVZcHgzZUR2Z2NRcisvb0FXTmtid2k5TGVJcnRuTUVnVFQxVT0=' \
