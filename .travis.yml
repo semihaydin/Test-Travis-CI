@@ -1,2 +1,2 @@
-  script: 
-  curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Basic c2VtaWhAbmV0c3Bhcmtlci5jb206RVkzc1Z0WXVZcHgzZUR2Z2NRcisvb0FXTmtid2k5TGVJcnRuTUVnVFQxVT0=' -d '{ \    "TargetUri": "http://php.testsparker.com", \    "PolicyId": "b20186662a01e411976c0a45dbb897e8", \    "Scope": "EnteredPathAndBelow", \    "ExcludeLinks": true, \    "UrlRewriteMode": "Heuristic", \    "MaxDynamicSignatures": 60, \    "UrlRewriteBlockSeparators": "/$.,;|:", \    "UrlRewriteAnalyzableExtensions": "htm,html", \    "Cookies": "name1=value1; name2=value2" \  }' 'https://www.netsparkercloud.com/api/1.0/scans/new'
+curl -H 'Authorization: Basic EY3sVtYuYpx3eDvgcQr+/oAWNkbwi9LeIrtnMEgTT1U=' 
+-X POST https://www.netsparkercloud.com/api/1.0/scans/new -F filedata=c:\travis\travis.txt
