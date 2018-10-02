@@ -1,7 +1,20 @@
-script: make test
-before_script: make pretest
-after_script:  make clean
+# http://travis-ci.org/#!/ipython/ipython
+language: python
+python:
+    - 3.6
+- 3.5
 
-before_script:
-  - make pretest1
-  - make pretest2
+
+import requests
+
+headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Basic c2VtaWhAbmV0c3Bhcmtlci5jb206RVkzc1Z0WXVZcHgzZUR2Z2NRcisvb0FXTmtid2k5TGVJcnRuTUVnVFQxVT0=',
+}
+
+data = {
+  '{ \\    "TargetUri": "http://php.testsparker.com", \\    "PolicyId": "b20186662a01e411976c0a45dbb897e8", \\    "Scope": "EnteredPathAndBelow", \\    "ExcludeLinks": true, \\    "UrlRewriteMode": "Heuristic", \\    "MaxDynamicSignatures": 60, \\    "UrlRewriteBlockSeparators": "/$.,;|:", \\    "UrlRewriteAnalyzableExtensions": "htm,html", \\    "Cookies": "name1': 'value1; name2=value2" \\  }'
+}
+
+response = requests.post('https://www.netsparkercloud.com/api/1.0/scans/new', headers=headers, data=data)
