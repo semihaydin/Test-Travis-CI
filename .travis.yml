@@ -1,4 +1,7 @@
-body='{
-"request": {
-"branch":"master"
-}}'
+script: make test
+before_script: make pretest
+after_script:  make clean
+
+before_script:
+  - make pretest1
+  - make pretest2
