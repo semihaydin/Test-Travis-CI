@@ -1,17 +1,43 @@
-# http://travis-ci.org/#!/ipython/ipython
+#language: ruby
+sudo: false
+dist: trusty
 language: python
 python:
-    - 3.6
-import requests
-
-headers = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Basic c2VtaWhAbmV0c3Bhcmtlci5jb206RVkzc1Z0WXVZcHgzZUR2Z2NRcisvb0FXTmtid2k5TGVJcnRuTUVnVFQxVT0=',
-}
-
-data = {
-  '{ \\    "TargetUri": "http://php.testsparker.com", \\    "PolicyId": "b20186662a01e411976c0a45dbb897e8", \\    "Scope": "EnteredPathAndBelow", \\    "ExcludeLinks": true, \\    "UrlRewriteMode": "Heuristic", \\    "MaxDynamicSignatures": 60, \\    "UrlRewriteBlockSeparators": "/$.,;|:", \\    "UrlRewriteAnalyzableExtensions": "htm,html", \\    "Cookies": "name1': 'value1; name2=value2" \\  }'
-}
-
-response = requests.post('https://www.netsparkercloud.com/api/1.0/scans/new', headers=headers, data=data)
+  - "3.5.2"
+branches:
+  only:
+  - master
+env:
+  global:
+    - PATH=$HOME/.local/user/bin:$PATH
+cache:
+  pip: true
+  directories:
+    - vendor/bundle
+    - node_modules
+addons:
+  apt:
+    packages:
+      - libxml2-utils
+deploy:
+  provider: heroku
+  api_key:
+    secure: "hylw2GIHMvZKOKX3uPSaLEzVrUGEA9mzGEA0s4zK37W9HJCTnvAcmgRCwOkRuC4L7R4Zshdh/CGORNnBBgh1xx5JGYwkdnqtjHuUQmWEXCusrIURu/iEBNSsZZEPK7zBuwqMHj2yRm64JfbTDJsku3xdoA5Z8XJG5AMJGKLFgUQ="
+  app: docs-travis-ci-com
+  skip_cleanup: true
+  on:
+    branch:
+    - master
+notifications:
+  slack:
+    rooms:
+      secure: LPNgf0Ra6Vu6I7XuK7tcnyFWJg+becx1RfAR35feWK81sru8TyuldQIt7uAKMA8tqFTP8j1Af7iz7UDokbCCfDNCX1GxdAWgXs+UKpwhO89nsidHAsCkW2lWSEM0E3xtOJDyNFoauiHxBKGKUsApJTnf39H+EW9tWrqN5W2sZg8=
+    on_success: never
+  webhooks:
+    https://docs.travis-ci.com/update_webhook_payload_doc
+install:
+  - rvm use 2.4.3 --install
+  - bundle install --deployment
+script:
+  - bundle exec rake test
+- xmllint --noout _site/feed.build-env-updates.xml
