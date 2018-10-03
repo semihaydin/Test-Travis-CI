@@ -1,4 +1,0 @@
-#!/bin/bash
-curl -H 'Authorization: Basic EY3sVtYuYpx3eDvgcQr+/oAWNkbwi9LeIrtnMEgTT1U=' 
--X POST https://www.netsparkercloud.com/api/1.0/scans/new -F filedata=c:\travis\travis.txt
-- ./upload_script.sh
