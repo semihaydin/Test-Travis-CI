@@ -1,7 +1,3 @@
 language: node_js
 node_js:
- - "7"
-before_script:
- - "curl -X POST \ https://www.netsparkercloud.com/api/1.0/scans/new \ -H 'Authorization: Basic ZWFjZTQ5MGY0NDliNDRkOWIzNWNhN2RhMDE4NjEwMTc6RVkzc1Z0WXVZcHgzZUR2Z2NRcisvb0FXTmtid2k5TGVJcnRuTUVnVFQxVT0=' \ -H 'Cache-Control: no-cache' \ -H 'Content-Type: application/json' \
--d '{"TargetUri": "http://php.testsparker.com","PolicyId": "b20186662a01e411976c0a45dbb897e8"}' "
-
+ - "node"
